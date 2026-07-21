@@ -17,7 +17,7 @@ router = APIRouter(
     description="Creates a new dataset with metadata.",
     response_model=DatasetSummaryResponse
 )
-def create_dataset(
+async def create_dataset(
     dataset: DatasetCreate,
     service: DatasetService = Depends(
         get_dataset_service
@@ -33,7 +33,7 @@ def create_dataset(
     description="Lists all available datasets.",
     response_model=list[DatasetSummaryResponse]
 )
-def list_datasets(
+async def list_datasets(
     
     service: DatasetService = Depends(
         get_dataset_service
@@ -46,7 +46,7 @@ def list_datasets(
             summary="Retrieve a dataset",
             description="Retrieves a dataset  by its ID with all its elements.",
             response_model=DatasetDetailResponse)
-def retrieve_dataset(dataset_id: int,
+async def retrieve_dataset(dataset_id: int,
     service: DatasetService = Depends(
         get_dataset_service
     )
