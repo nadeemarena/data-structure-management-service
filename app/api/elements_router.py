@@ -20,7 +20,7 @@ router = APIRouter(
     description="Adds a new data element to the specified dataset.",
     response_model=DataElementResponse
 )
-async def add_element_to_dataset(
+def add_element_to_dataset(
     dataset_id: int,
     element: DataElementCreate,
     service: DataElementService = Depends(
@@ -41,7 +41,7 @@ async def add_element_to_dataset(
     description="Lists all data elements associated with the specified dataset.",
     response_model=list[DataElementResponse]
 )
-async def list_elements_in_dataset(
+def list_elements_in_dataset(
     dataset_id: int,
     service: DataElementService = Depends(
         get_element_service
@@ -55,7 +55,7 @@ async def list_elements_in_dataset(
             summary="Filtering or Searching",
             description="Filtering or searching data elements based on optional filters.",
             response_model=list[DataElementResponse])
-async def find_elements(
+def find_elements(
     dataset_id: int | None = None,
     data_type: DataType | None = None,
     is_pii: bool | None = None,
